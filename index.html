@@ -1,54 +1,44 @@
-<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-
-<style>
-  .arjs-loader {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .arjs-loader div {
-    text-align: center;
-    font-size: 1.25em;
-    color: white;
-  }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="application-name" content="AR Stamp Rally">
+  <meta name="keywords" content="AR,Stamp Rally,松ヶ丘開墾場,ましろちゃん、蚕、歴史">
+  <title>AR</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+  <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
 <body style="margin : 0px; overflow: hidden;">
-  <!-- minimal loader shown until image descriptors are loaded -->
-  <div class="arjs-loader">
-    <div>Loading, please wait...</div>
-  </div>
-  <a-scene
-    vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true;"
-    embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
-  >
-    <!-- we use cors proxy to avoid cross-origin problems -->
-    <a-nft
-      type="nft"
-      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    >
-      <a-entity
-        gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-        scale="5 5 5"
-        position="100 0 -100"
-        rotation="0 100 -100"
-      >
-      </a-entity>
-    </a-nft>
-    <a-entity camera></a-entity>
-  </a-scene>
+<!-- minimal loader shown until image descriptors are loaded -->
+<div class="arjs-loader">
+  <div>Loading, please wait...</div>
+</div>
+<a-scene
+  vr-mode-ui="enabled: false;"
+  renderer="logarithmicDepthBuffer: true;"
+  embedded
+  arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+>
+<a-marker preset="hiro">
+  <a-entity
+    position="0 0 0"
+    scale="0.05 0.05 0.05"
+    gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
+  ></a-entity>
+</a-marker>
+<a-entity camera></a-entity>
+<!-- <a-entity camera position="0 0 0">
+  <a-camera gps-camera="minDistance:5; maxDistance:10;" rotation-reader> 
+    <a-gui-cursor 
+    fuse="true" fuse-timeout="1000"
+    design="ring">
+    </a-gui-cursor> 
+  </a-camera> -->
+</a-entity>
+</a-scene>
 </body>
