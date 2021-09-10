@@ -7,6 +7,7 @@
   <meta name="application-name" content="AR Stamp Rally">
   <meta name="keywords" content="AR,Stamp Rally,松ヶ丘開墾場,ましろちゃん、蚕、歴史">
   <title>AR</title>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
@@ -24,21 +25,12 @@
   embedded
   arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
 >
-<a-marker preset="hiro">
-  <a-entity
-    position="0 0 0"
-    scale="0.05 0.05 0.05"
-    gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-  ></a-entity>
+<a-marker type='pattern' url='pattern-QR_git_hub.patt'>
+  <a-sphere scale=".25 .25 .25" position="0 .5 0" color="#f00">
+    <a-animation attribute="position" to="0 1 0" direction="alternate" dur="2000" repeat="indefinite">
+    </a-animation>
+  </a-sphere>
 </a-marker>
-<a-entity camera></a-entity>
-<!-- <a-entity camera position="0 0 0">
-  <a-camera gps-camera="minDistance:5; maxDistance:10;" rotation-reader> 
-    <a-gui-cursor 
-    fuse="true" fuse-timeout="1000"
-    design="ring">
-    </a-gui-cursor> 
-  </a-camera> -->
 </a-entity>
 </a-scene>
 </body>
