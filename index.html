@@ -15,12 +15,11 @@
   <link rel="stylesheet" href="index.css">
 </head>
 <body style="margin : 0px; overflow: hidden;">
-<!-- <div class="arjs-loader">
+<div class="arjs-loader">
   <div>Loading, please wait...</div>
-</div> -->
-<!-- https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/stfmy1267/AR-test/main/pattern-QR_git_hub.patt -->
+</div>
 <a-scene embedded arjs="debugUIEnabled:false;">
-  <a-marker type='pattern' preset="custom" url='https://www.yatex.org/gitbucket/Fumiya238/mypage/blob/master/material/pattern-AR-marker.patt'>
+  <a-marker type='pattern' preset="custom" url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/stfmy1267/AR-test/main/pattern-QR_git_hub.patt'>
     <a-sphere scale=".25 .25 .25" position="0 .5 0" color="#f00">
     <a-animation attribute="position" to="0 1 0" direction="alternate" dur="2000" repeat="indefinite"></a-animation>
   </a-sphere>
