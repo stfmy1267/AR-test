@@ -9,12 +9,17 @@ html {
     font-size: 62.5%;/*rem算出をしやすくするために*/
 }
 
-div{
+div.btn-list{
     position: absolute;
-    margin-top: 20%;
     display: block;
     width: 100%;
-    /* background-color: chartreuse; */
+    height: auto;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    box-sizing: border-box;
 }
 button{
     position: relative;
@@ -25,19 +30,20 @@ button{
     color: #eee;
     border: none;
 }
-button:nth-child(even){
+button:nth-child(odd){
     margin-top: 100px;
     background-color: orange;
     transform: translateX(100%);
 }
-button:nth-child(odd){
-    background-color: darkcyan;
+button:nth-child(even){
     float: right;
+    /* margin-top: 100px; */
+    background-color: darkcyan;
     transform: translateX(-100%);
 }
 
-.ui {
-    position: absolute;
+div.ui {
+    position:absolute;
     z-index: 100;
     bottom: 0;
     left: 0;
