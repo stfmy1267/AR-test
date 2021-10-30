@@ -33,13 +33,13 @@ button{
 button:nth-child(odd){
     margin-top: 100px;
     background-color: orange;
-    transform: translateX(100%);
+    /* transform: translateX(100%); */
 }
 button:nth-child(even){
     float: right;
     /* margin-top: 100px; */
     background-color: darkcyan;
-    transform: translateX(-100%);
+    /* transform: translateX(-100%); */
 }
 
 div.ui {
