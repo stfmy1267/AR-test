@@ -15,8 +15,18 @@
 
 <link rel="stylesheet" href="index.css">
 <script type="text/script" src="script.js" defer="defer"></script>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script> 
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script> 
+
 </head>
 <body style="margin:0px; overflow:hidden;">
+  <div>
+    <button><img src="" alt="a"></button>
+    <button><img src="" alt="a"></button>
+    <button><img src="" alt="a"></button>
+    <button><img src="" alt="a"></button>
+  </div>
 <!-- A-Frame の VR空間に AR.js を紐づける（デバッグUIを非表示） -->
 <a-scene embedded arjs="debugUIEnabled:false;">
 
@@ -32,11 +42,6 @@
 </a-entity>
 
 </a-scene>
-
-<li><button>施設情報</button></li>
-<li><button>スタンプ</button></li>
-<li><button>撮影</button></li>
-<li><button>戻る</button></li>
 
 
 </body>
