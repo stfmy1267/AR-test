@@ -42,7 +42,7 @@ button:nth-child(even){
     /* transform: translateX(-100%); */
 }
 
-div.ui {
+div.photo-contens {
     position:absolute;
     z-index: 100;
     bottom: 0;
@@ -50,29 +50,31 @@ div.ui {
     width: 100%;
     height: auto;
     margin: 0;
-    padding: 10px 15px 30px;
     text-align: center;
     box-sizing: border-box;
 }
-.ui a {
+.photo-contens a {
     display: inline-block;
     width: 60px;
     height: 60px;
-    background-color: #ffffff;
+    background-color: #0bb2ff;
     line-height: 100%;
     color: #303030;
     margin: 10px 3px;
     border-radius: 50%;
     position: relative;
-
 }
-.ui a i {
+.photo-contens a:nth-child(1){
+    float: left;
+}
+
+.photo-contens a img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-.ui a:active {
+.photo-contens a:active {
     color: #ff0000;
 }
 
@@ -82,7 +84,7 @@ div.ui {
     display: block;;
     visibility: hidden;
 }
-.ui a.disabled {
+.photo-contens a.disabled {
     pointer-events: none;
     color: #cccccc;
 }
