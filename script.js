@@ -20,6 +20,7 @@ $('.backbtn').on('click',()=>{
 $('#camera').on('click',()=>{
     $('.photo-contens').css({'transform':'translateY(0%)','transition': '.8s'});
     $(btn).toggleClass("slidein");
+    $('#camera-back').css('transform','translateY(0%)'); 
     camera.innerHTML="";
 });
 

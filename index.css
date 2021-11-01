@@ -33,6 +33,9 @@ div.btn-list{
     transform: translateY(-900%);
     cursor: pointer;
 }
+/* .btn-list button:hover{
+
+} */
 button:first-child img{
     transform: rotate(90deg);
 }
@@ -109,7 +112,7 @@ div.info div .backbtn{
 /* カメラ */
 div.photo-contens {
     position:absolute;
-    z-index: 100;
+    /* z-index: 100; */
     bottom: 0;
     left: 0;
     width: 100%;
@@ -119,13 +122,17 @@ div.photo-contens {
     box-sizing: border-box;
     transform: translateY(100%);
 }
-.photo-contens button{
+button#camera-back{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
     width: 60px;
     height: 60px;
-    float:right;
-    background-color: #0bb2ff;
+    z-index: 100;
+    background-color: #ffffff;
     border-radius: 50%;
     border: none;
+    transform: translateY(-150%);
 }
 .photo-contens a {
     display: inline-block;
@@ -133,7 +140,7 @@ div.photo-contens {
     height: 60px;
     background-color: #0bb2ff;
     line-height: 100%;
-    margin: 10px 3px;
+    margin:0 2rem 1rem 0;
     border-radius: 50%;
     position: relative;
 }
