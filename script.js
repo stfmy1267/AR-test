@@ -21,11 +21,11 @@ let take_photo_btn = document.querySelector('#take-photo');
 let delete_photo_btn = document.querySelector('#delete-photo');
 let download_photo_btn = document.querySelector('#download-photo');
 $('#camera-back').on('click',()=>{
-    // location.reload();
-    camera.innerHTML=gui_cursor;
+    location.reload();
+    // camera.innerHTML=gui_cursor;
     // window.onload = function(){
-    $('.photo-contens').css({'transform':'translateY(100%)','transition': '.8s'})
-    $(btn).toggleClass("slidein");
+    // $('.photo-contens').css({'transform':'translateY(100%)','transition': '.8s'})
+    // $(btn).toggleClass("slidein");
     // };
 });
 

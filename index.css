@@ -36,6 +36,12 @@ div.btn-list{
 button:first-child img{
     transform: rotate(90deg);
 }
+.btn-list button img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 button:nth-child(odd){
     background-color: orange;
     transition: .8s;
