@@ -9,6 +9,14 @@ $('a-box').on('click',()=>{
 $('#back').on('click',()=>{
     $(btn).toggleClass("slidein");
 });
+$('#info').on('click',()=>{
+    $('.info').css({'max-height':'85%','transition': '.8s'});
+    $(btn).toggleClass("slidein");
+});
+$('.backbtn').on('click',()=>{
+    $('.info').css({'max-height':'0%','transition': '.8s'});
+    $(btn).toggleClass("slidein");
+});
 $('#camera').on('click',()=>{
     $('.photo-contens').css({'transform':'translateY(0%)','transition': '.8s'});
     $(btn).toggleClass("slidein");
@@ -22,11 +30,6 @@ let delete_photo_btn = document.querySelector('#delete-photo');
 let download_photo_btn = document.querySelector('#download-photo');
 $('#camera-back').on('click',()=>{
     location.reload();
-    // camera.innerHTML=gui_cursor;
-    // window.onload = function(){
-    // $('.photo-contens').css({'transform':'translateY(100%)','transition': '.8s'})
-    // $(btn).toggleClass("slidein");
-    // };
 });
 
 //スナップショットボタン
