@@ -45,6 +45,25 @@ div#stamp-list button{
     font-size: 2erm;
 }
 
+
+button#camera-back{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    z-index: 100;
+    background-color: #0bb2ff;
+    border-radius: 50%;
+    border: none;
+    transform: translateY(-150%);
+}
+button#camera-back img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 div.btn-list{
     position: absolute;
     top: 0;
@@ -157,18 +176,7 @@ div.photo-contens {
     box-sizing: border-box;
     transform: translateY(200%);
 }
-button#camera-back{
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 60px;
-    height: 60px;
-    z-index: 100;
-    background-color: #ffffff;
-    border-radius: 50%;
-    border: none;
-    transform: translateY(-150%);
-}
+
 .photo-contens a {
     display: inline-block;
     width: 60px;
