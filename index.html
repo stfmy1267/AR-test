@@ -23,22 +23,21 @@
 
 <!-- A-Frame の VR空間に AR.js を紐づける（デバッグUIを非表示） -->
 <a-scene embedded arjs="debugUIEnabled:false;">
-<!-- <a-assets>
+<a-assets>
   <a-asset-item id="char" src="ましろ軽量版.gltf"></a-asset-item>
-</a-assets> -->
+</a-assets>
 
 <a-marker preset="hiro">
-  <!-- <a-entity 
+  <a-entity 
     position="0 0.5 0" 
     animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; easing:linear;"
     gltf-model="#char">
-    </a-entity> -->
-    <a-box 
+  </a-entity>
+    <!-- <a-box 
       position="0 0.5 0" 
       wireframe="true" 
       animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; easing:linear;">
-    </a-box> 
-    </a-marker>
+    </a-box>  -->
 </a-marker>
 
 <a-entity camera>
