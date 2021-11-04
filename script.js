@@ -18,11 +18,11 @@ $('.backbtn').on('click',()=>{
 });
 $('#stamp').on('click',()=>{
     alert('スタンプゲット');
-    $('#stamp-list').css('transform','translateY(150%)')
+    $('#stamp-list').css({'transform':'translate(-50%,150%)','transition': '.8s'})
     $(btn).toggleClass("slidein");
 });
 $('#stampback').on('click',()=>{
-    $('#stamp-list').css('transform','translateY(-150%)')
+    $('#stamp-list').css({'transform':'translate(-50%,150%)','transition': '.8s'})
     $(btn).toggleClass("slidein");
 });
 $('#camera').on('click',()=>{
