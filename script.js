@@ -22,7 +22,7 @@ $('#stamp').on('click',()=>{
     $(btn).toggleClass("slidein");
 });
 $('#stampback').on('click',()=>{
-    $('#stamp-list').css({'transform':'translate(-50%,150%)','transition': '.8s'})
+    $('#stamp-list').css({'transform':'translate(-50%,-150%)','transition': '.8s'})
     $(btn).toggleClass("slidein");
 });
 $('#camera').on('click',()=>{
