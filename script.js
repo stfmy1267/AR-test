@@ -32,13 +32,13 @@ $('#camera').on('click',()=>{
     $('.photo-contens').css({'transform':'translateY(0%)','transition': '.8s'});
     $(btn).toggleClass("slidein");
     $('#camera-back').css('transform','translateY(0%)'); 
-    camera.innerHTML="";
+    // camera.innerHTML="";
 });
 $('#camera-back').on('click',()=>{
-    location.reload();
+    // location.reload();
     $(btn).toggleClass("slidein");
-    // $('.photo-contens').css({'transform':'translateY(150%)','transition': '.8s'});
-    // $('#camera-back').css('transform','translateY(-150%)'); 
+    $('.photo-contens').css({'transform':'translateY(150%)','transition': '.8s'});
+    $('#camera-back').css('transform','translateY(-150%)'); 
 });
 // カメラ機能
 let image = document.querySelector('#snap');
