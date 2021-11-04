@@ -18,7 +18,7 @@ div#stamp-list{
     justify-content: space-around;
     align-items: center;
     z-index: 100;   
-    transform: translate(-50%,50%);
+    transform: translate(-50%,-150%);
 }
 
 div#stamp-list a{
