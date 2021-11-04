@@ -12,7 +12,7 @@ $('#back').on('click',()=>{
     $(btn).toggleClass("slidein");
 });
 $('#info').on('click',()=>{
-    $('.info').css({'max-height':'85%','transition': '.8s'});
+    $('.info').css({'max-height':'90%','transition': '.8s'});
     $(btn).toggleClass("slidein");
 });
 $('.backbtn').on('click',()=>{

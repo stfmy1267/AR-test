@@ -151,7 +151,7 @@ div.info{
 }
 div.info img{
     position:relative;
-    height: 300px;
+    height: 270px;
     width: 100%; 
     object-fit: cover;
     overflow: hidden;
@@ -164,7 +164,10 @@ div.info div{
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    padding: 30px;
+    padding:10px 30px 30px 30px;
+}
+div.info div h1{
+    margin-top: 0px;
 }
 div.info div .backbtn{
     position: relative;
@@ -174,7 +177,7 @@ div.info div .backbtn{
     background-color: #0090bb;
     color: #fff;
     width: 100px;
-    height: 50px;
+    height: 40px;
 }
 
 /* カメラ */
