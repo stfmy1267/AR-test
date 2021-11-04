@@ -1,7 +1,6 @@
 const btn = document.querySelectorAll('button');
 let camera = document.querySelector('a-entity');
 const gui_cursor = camera.innerHTML
-console.log(cursor);
 
 $('a-box').on('click',()=>{
     $(btn).toggleClass("slidein");
@@ -17,11 +16,20 @@ $('.backbtn').on('click',()=>{
     $('.info').css({'max-height':'0%','transition': '.8s'});
     $(btn).toggleClass("slidein");
 });
+$('#stamp').on('click',()=>{
+    alert('スタンプゲット');
+    $('#stamp-list').css('transform','translateY(150%)')
+    $(btn).toggleClass("slidein");
+});
+$('#stampback').on('click',()=>{
+    $('#stamp-list').css('transform','translateY(-150%)')
+    $(btn).toggleClass("slidein");
+});
 $('#camera').on('click',()=>{
     $('.photo-contens').css({'transform':'translateY(0%)','transition': '.8s'});
     $(btn).toggleClass("slidein");
     $('#camera-back').css('transform','translateY(0%)'); 
-    camera.innerHTML="";
+    // camera.innerHTML="";
 });
 
 // カメラ機能
@@ -30,7 +38,10 @@ let take_photo_btn = document.querySelector('#take-photo');
 let delete_photo_btn = document.querySelector('#delete-photo');
 let download_photo_btn = document.querySelector('#download-photo');
 $('#camera-back').on('click',()=>{
-    location.reload();
+    // location.reload();
+    $(btn).toggleClass("slidein");
+    $('.photo-contens').css({'transform':'translateY(150%)','transition': '.8s'});
+    $('#camera-back').css('transform','translateY(-150%)'); 
 });
 
 //スナップショットボタン
