@@ -9,9 +9,9 @@
 <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.js"></script>
 <!-- AR.js ライブラリの読み込み -->
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
 <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
+
 <!-- jquery ライブラリの読み込み -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- 通常のcssとjsの読み込み -->
@@ -22,27 +22,31 @@
 <body style="margin:0px; overflow:hidden;">
 
 <!-- A-Frame の VR空間に AR.js を紐づける（デバッグUIを非表示） -->
-<a-scene embedded arjs="debugUIEnabled:false;">
+<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">
 <a-assets>
   <a-asset-item id="char" src="ましろ軽量版.gltf"></a-asset-item>
 </a-assets>
 
 <a-marker preset="hiro">
   <a-entity 
+    gltf-model="#char"
     position="0 0.5 0" 
     animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; easing:linear;"
-    gltf-model="#char">
+    >
   </a-entity>
-    <!-- <a-box 
-      position="0 0.5 0" 
-      wireframe="true" 
-      animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; easing:linear;">
-    </a-box>  -->
 </a-marker>
+<!-- <a-box 
+  position="0 0.5 0" 
+  wireframe="true" 
+  animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; easing:linear;">
+</a-box>  -->
 
-<a-entity camera>
-  <a-gui-cursor id="cursor" fuse="true" fuse-timeout="1000" design="ring"></a-gui-cursor>
-</a-entity>
+<a-camera look-controls wasd-controls position="0 0 0">
+  <a-gui-cursor 
+  fuse="true" 
+  fuse-timeout="1000" 
+  design="ring"></a-gui-cursor>
+</a-camera>
 
 </a-scene>
 

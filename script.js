@@ -1,8 +1,11 @@
 const btn = document.querySelectorAll('button');
-let camera = document.querySelector('a-entity');
+let camera = document.querySelector('a-camera');
 const gui_cursor = camera.innerHTML
 
-$('a-box').on('click',()=>{
+// $('a-box').on('click',()=>{
+//     $(btn).addClass("slidein");
+// });
+$('a-entity').on('click',()=>{
     $(btn).addClass("slidein");
 });
 $('#back').on('click',()=>{

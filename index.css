@@ -170,8 +170,11 @@ div.info div .backbtn{
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
     font-size: 2erm;
+    background-color: #0090bb;
+    color: #fff;
+    width: 100px;
+    height: 50px;
 }
 
 /* カメラ */
