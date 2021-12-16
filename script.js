@@ -6,17 +6,22 @@ function GetLocation() {
 
 function AddLocation(position) {
     let entity = document.querySelector('a-entity');
-    let geo_lat = "緯度:" + position.coords.latitude;
-    let geo_lng = "経度:" + position.coords.longitude;
+    // let GpsEntityPlace = entity.getAttribute('gps-entity-place');
+    let geo_lat = position.coords.latitude;
+    let geo_lng = position.coords.longitude;
+    GpsEntityPlace = "latitude:" + geo_lat + "; longitude:" + geo_lng +";";
     $(entity).attr('gps-entity-place',"latitude:" + geo_lat + "; longitude:" + geo_lng +";");
     console.log($(entity).attr('gps-entity-place'));
+    // console.log(GpsEntityPlace);
 }
 
 GetLocation();
 
-const btn = document.querySelectorAll('button');
-let camera = document.querySelector('a-camera');
-const gui_cursor = camera.innerHTML
+window.addEventListener("load", function() {
+
+    const btn = document.querySelectorAll('button');
+    let camera = document.querySelector('a-camera');
+    const gui_cursor = camera.innerHTML
 
 // $('a-box').on('click',()=>{
 //     $(btn).addClass("slidein");
@@ -67,15 +72,15 @@ take_photo_btn.addEventListener("click", function (e) {
     e.preventDefault();
     let video = document.querySelector('video');
     let snap = takeSnapshot(video);
-
+    
     //スナップショット表示.
     image.setAttribute('src', snap);
     image.classList.add('visible');
-
+    
     // 削除ボタンと保存ボタン有効
     delete_photo_btn.classList.remove("disabled");
     download_photo_btn.classList.remove("disabled");
-
+    
     // 保存ボタンにスナップショットを渡す
     download_photo_btn.href = snap;
 });
@@ -88,11 +93,11 @@ delete_photo_btn.addEventListener("click", function(e){
     // スナップショットを隠す
     image.setAttribute('src', "");
     image.classList.remove("visible");
-
+    
     // 削除ボタンと保存ボタン無効
     delete_photo_btn.classList.add("disabled");
     download_photo_btn.classList.add("disabled");
-
+    
 });
 
 //スナップショットを撮る
@@ -102,14 +107,14 @@ function takeSnapshot(video) {
     let width = video.videoWidth;
     let height = video.videoHeight;
     let aScene = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
-
+    
     if (width && height) {
         //videoのサイズをキャンバスにセット
         resizedCanvas.width = width;
         resizedCanvas.height = height;
         //キャンバスにvideoをコピー
         resizedContext.drawImage(video, 0, 0, width, height);
-
+        
         //カメラの画角でar側の縮小処理を変える
         if (width > height) {
             // 横長（PC)
@@ -124,3 +129,4 @@ function takeSnapshot(video) {
         return resizedCanvas.toDataURL('image/png');
     }
 }
+});
