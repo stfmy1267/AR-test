@@ -15,8 +15,14 @@
 //     console.log(entity);
 // }
 
+
+// $('a-scene').appendChild($("<a-entity gps-entity-place=latitude:" + geo_lat + "; longitude:" + geo_lng + ";look-at=[gps-camera] scale = 1 1 1 potion=0 3 0 animation=property:rotation; dur:10000; from : 0 0 0; to : 0 360 0; loop : -1 ; easing:linear;gltf-model=#char></a-entity>"));
+
+// GetLocation();
+
+window.addEventListener("load", () => {
    // 現在地の取得
-   function GetLocation() {
+function GetLocation() {
     navigator.geolocation.getCurrentPosition(AddLocation);
     // navigator.geolocation.watchPosition(AddLocation);
 }
@@ -33,11 +39,7 @@ function AddLocation(position) {
 }
 
 GetLocation();
-// $('a-scene').appendChild($("<a-entity gps-entity-place=latitude:" + geo_lat + "; longitude:" + geo_lng + ";look-at=[gps-camera] scale = 1 1 1 potion=0 3 0 animation=property:rotation; dur:10000; from : 0 0 0; to : 0 360 0; loop : -1 ; easing:linear;gltf-model=#char></a-entity>"));
 
-// GetLocation();
-
-window.addEventListener("load", () => {
     const btn = document.querySelectorAll('button');
     let camera = document.querySelector('a-camera');
     const gui_cursor = camera.innerHTML
