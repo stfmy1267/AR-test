@@ -1,3 +1,18 @@
+// 現在地の取得
+function GetLocation() {
+    navigator.geolocation.getCurrentPosition(AddLocation);
+}
+
+function AddLocation(position) {
+    let entity = document.querySelector('a-entity');
+    let geo_lat = "緯度:" + position.coords.latitude;
+    let geo_lng = "経度:" + position.coords.longitude;
+    $(entity).attr('gps-entity-place',"latitude:" + geo_lat + "; longitude:" + geo_lng +";");
+    console.log($(entity).attr('gps-entity-place'));
+}
+
+GetLocation();
+
 const btn = document.querySelectorAll('button');
 let camera = document.querySelector('a-camera');
 const gui_cursor = camera.innerHTML
