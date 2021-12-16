@@ -26,8 +26,8 @@ function AddLocation(position) {
     let geo_lng = position.coords.longitude-0.0001;
     // $('a-scene').appendChild($("<a-entity gps-entity-place=latitude:" + geo_lat + "; longitude:" + geo_lng + ";look-at=[gps-camera] scale = 1 1 1 potion=0 3 0 animation=property:rotation; dur:10000; from : 0 0 0; to : 0 360 0; loop : -1 ; easing:linear;gltf-model=#char></a-entity>"));
     $('a-assets').after($("<a-entity gps-entity-place=latitude:" + geo_lat + "; longitude:" + geo_lng + ";look-at=[gps-camera] scale =1,1,1 potion=0,3,0 animation=property:rotation;dur:10000;from:0,0,0;to:0,360,0;loop:-1;easing:linear; gltf-model=#char></a-entity>" ));
-    let entity = document.querySelector('a-entity');
-    $(entity).attr('gps-entity-place',"latitude:" + geo_lat + "; longitude:" + geo_lng +";");
+    // let entity = document.querySelector('a-entity');
+    $('a-entity').attr('gps-entity-place',"latitude:" + geo_lat + "; longitude:" + geo_lng +";");
     console.log(entity.getAttribute('gps-entity-place'));
     console.log(entity);
 }
