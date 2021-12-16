@@ -1,6 +1,7 @@
 // 現在地の取得
 function GetLocation() {
-    navigator.geolocation.getCurrentPosition(AddLocation);
+    // navigator.geolocation.getCurrentPosition(AddLocation);
+    navigator.geolocation.watchPosition(AddLocation);
 }
 
 function AddLocation(position) {
