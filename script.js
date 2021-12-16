@@ -15,6 +15,24 @@
 //     console.log(entity);
 // }
 
+   // 現在地の取得
+   function GetLocation() {
+    navigator.geolocation.getCurrentPosition(AddLocation);
+    // navigator.geolocation.watchPosition(AddLocation);
+}
+function AddLocation(position) {
+    // let GpsEntityPlace = entity.getAttribute('gps-entity-place');
+    let geo_lat = position.coords.latitude-0.0001;
+    let geo_lng = position.coords.longitude-0.0001;
+    // $('a-scene').appendChild($("<a-entity gps-entity-place=latitude:" + geo_lat + "; longitude:" + geo_lng + ";look-at=[gps-camera] scale = 1 1 1 potion=0 3 0 animation=property:rotation; dur:10000; from : 0 0 0; to : 0 360 0; loop : -1 ; easing:linear;gltf-model=#char></a-entity>"));
+    $('a-assets').after($("<a-entity gps-entity-place=latitude:" + geo_lat + "; longitude:" + geo_lng + ";look-at=[gps-camera] scale =1,1,1 potion=0,3,0 animation=property:rotation;dur:10000;from:0,0,0;to:0,360,0;loop:-1;easing:linear; gltf-model=#char></a-entity>" ));
+    let entity = document.querySelector('a-entity');
+    $(entity).attr('gps-entity-place',"latitude:" + geo_lat + "; longitude:" + geo_lng +";");
+    console.log(entity.getAttribute('gps-entity-place'));
+    console.log(entity);
+}
+
+GetLocation();
 // $('a-scene').appendChild($("<a-entity gps-entity-place=latitude:" + geo_lat + "; longitude:" + geo_lng + ";look-at=[gps-camera] scale = 1 1 1 potion=0 3 0 animation=property:rotation; dur:10000; from : 0 0 0; to : 0 360 0; loop : -1 ; easing:linear;gltf-model=#char></a-entity>"));
 
 // GetLocation();
