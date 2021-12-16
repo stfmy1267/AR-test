@@ -1,21 +1,21 @@
-// // 現在地の取得
-// function GetLocation() {
-//     // navigator.geolocation.getCurrentPosition(AddLocation);
-//     navigator.geolocation.watchPosition(AddLocation);
-// }
+// 現在地の取得
+function GetLocation() {
+    // navigator.geolocation.getCurrentPosition(AddLocation);
+    navigator.geolocation.watchPosition(AddLocation);
+}
 
-// function AddLocation(position) {
-//     let entity = document.querySelector('a-entity');
-//     // let GpsEntityPlace = entity.getAttribute('gps-entity-place');
-//     let geo_lat = position.coords.latitude;
-//     let geo_lng = position.coords.longitude;
-//     GpsEntityPlace = "latitude:" + geo_lat + "; longitude:" + geo_lng +";";
-//     $(entity).attr('gps-entity-place',"latitude:" + geo_lat + "; longitude:" + geo_lng +";");
-//     console.log($(entity).attr('gps-entity-place'));
-//     // console.log(GpsEntityPlace);
-// }
+function AddLocation(position) {
+    let entity = document.querySelector('a-entity');
+    // let GpsEntityPlace = entity.getAttribute('gps-entity-place');
+    let geo_lat = position.coords.latitude;
+    let geo_lng = position.coords.longitude;
+    GpsEntityPlace = "latitude:" + geo_lat + "; longitude:" + geo_lng +";";
+    $(entity).attr('gps-entity-place',"latitude:" + geo_lat + "; longitude:" + geo_lng +";");
+    console.log($(entity).attr('gps-entity-place'));
+    // console.log(GpsEntityPlace);
+}
 
-// GetLocation();
+GetLocation();
 
 window.addEventListener("load", function() {
 
