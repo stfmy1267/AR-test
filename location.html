@@ -1,46 +1,83 @@
-    <html>
-    <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- <meta name="viewport" content="width=device-width"> -->
-    <title>AR-location_based</title>
-    <!-- A-Frameと、AR.jsのA-FrameをJavaScriptに読み込みます。 -->
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
-    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.js"></script>
-    </head>
-    <body>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AR-marker_based</A-marker_based></title>
+<!-- A-Frame ライブラリの読み込み -->
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+<script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.js"></script>
+<!-- AR.js ライブラリの読み込み -->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
 
-    <a-scene
-    vr-mode-ui="enabled: false"
-    embedded
-    gps-camera-debug
-    arjs="sourceType: webcam; debugUIEnabled: false;"
-    >   
-    <!-- オリジナルオブジェクトの読み込みとID付与 -->
-    <a-assets>
-        <a-asset-item id="char" src="/ましろ軽量版.gltf"></a-asset-item>
-    </a-assets>
-    <!-- オブジェクトの設定（どこに置くか、どんな動きをつけるかなど） -->
-    <a-entity 
-    gps-entity-place="38.887768792308236; 139.8602499290139;"
-    look-at="[gps-camera]"
-    scale = "1 1 1"
-    potion="0 3 0"
-    animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; easing:linear;"
-    gltf-model="#char">
-    </a-entity>
+<!-- jquery ライブラリの読み込み -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 通常のcssとjsの読み込み -->
+<link rel="stylesheet" href="index.css">
+<script  src="script.js" defer="defer"></script>
 
-    <!-- カーソルの設定 -->
-    <a-entity camera position="0 0 0">
-        <a-camera gps-camera="minDistance:5; maxDistance:1000;" rotation-reader> 
-            <a-gui-cursor id="cursor" fuse="true" fuse-timeout="1000" design="ring"></a-gui-cursor> 
-        </a-camera>
-    </a-entity>
+</head>
+<body style="margin:0px; overflow:hidden;">
 
-    </a-scene>
-    </body>
-    </html>
+<!-- A-Frame の VR空間に AR.js を紐づける（デバッグUIを非表示） -->
+<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">
+<a-assets>
+    <a-asset-item id="char" src="ましろ軽量版.gltf"></a-asset-item>
+</a-assets>
+
+<!-- rotation="-90 0 0" -->
+<a-entity 
+gps-entity-place="latitude:38.89284370397445; longitude:139.81938850113664;"
+look-at="[gps-camera]"
+scale = "1 1 1"
+potion="0 3 0"
+animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; easing:linear;"
+gltf-model="#char">
+</a-entity>
+
+<a-camera look-controls wasd-controls position="0 0 0">
+    <a-gui-cursor 
+    fuse="true" 
+    fuse-timeout="1000" 
+    design="ring"></a-gui-cursor>
+</a-camera>
+
+</a-scene>
+
+<div id="stamp-list">
+    <a href="https://www.yatex.org/gitbucket/Fumiya238/AR-project/pages/stamp-list/StampList.html"><p>スタンプ一覧へ</p></a>
+    <button id="stampback">閉じる</button>
+</div>
+    <button id="camera-back"><img src="img/cancel.svg"></button>
+    <div class="btn-list">
+    <button id="back"><img src="img/chevron-up.svg" alt=""></button>
+    <button id="info"><img src="img/info.png" alt=""></button>
+    <button id="stamp"><img src="img/stamp.png" alt=""></button>
+    <button id="camera"><img src="img/camera.svg" alt=""></button>
+</div>
+
+<div class="info">
+    <img src="img/MainImg-2.jpg">
+    <div>
+    <h1>松ヶ岡本陣</h1>
+    <hr>
+    <p>
+        開館時間：10時～15時 
+        休館日：不定休
+        本陣の向かい側道路を挟んで
+    </p>
+    <button class="backbtn">閉じる</button>
+    </div>
+</div>
+
+<div class="photo-contens">
+<img id="snap">
+<a href="#" id="delete-photo" title="Delete Photo" class="disabled"><img src="img/bin.svg"></a>
+<a href="" id="take-photo" title="Take Photo"><img src="img/camera.svg"></a>
+<a href="#" id="download-photo" download="selfie.png" title="Save Photo" class="disabled" target="_blank"><img src="img/download.svg"></a>
+</div>
+
+</body>
+</html>
