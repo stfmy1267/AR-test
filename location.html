@@ -29,7 +29,7 @@
 
 <!-- rotation="-90 0 0" -->
 <a-entity 
-gps-entity-place="latitude:38.887605669214835; longitude:139.85997636417184;"
+gps-entity-place="latitude:38.88778387920962; longitude:139.860490969855;"
 look-at="[gps-camera]"
 scale = "1 1 1"
 potion="0 3 0"
@@ -37,7 +37,8 @@ animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; 
 gltf-model="#char">
 </a-entity>
 
-<a-camera gps-camera="minDistance:30; maxDistance:100"  rotation-reader position="0 0 0">
+<a-camera gps-camera="minDistance:30; maxDistance:100" 
+rotation-reader look-controls wasd-controls position="0 0 0">
     <a-gui-cursor 
     fuse="true" 
     fuse-timeout="1000" 
