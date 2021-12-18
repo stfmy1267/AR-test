@@ -27,17 +27,6 @@
     <a-asset-item id="char" src="ましろ軽量版.gltf"></a-asset-item>
 </a-assets>
 
-<!-- rotation="-90 0 0" -->
-<!-- gps-entity-place="latitude:38.88778387920962; longitude:139.860490969855;" -->
-<!-- <a-entity 
-gps-entity-place="latitude:38.890674315611676; longitude:139.85271746509923;" 
-look-at="[gps-camera]"
-scale = "1 1 1"
-potion="0 3 0"
-animation="property:rotation; dur:10000; from : 0 0 0; to : 0 360 0;loop : -1 ; easing:linear;"
-gltf-model="#char">
-</a-entity> -->
-
 <a-camera gps-camera="maxDistance:100" 
 rotation-reader look-controls wasd-controls position="0 0 0">
     <a-gui-cursor 
@@ -88,8 +77,8 @@ function GetLocation() {
     // navigator.geolocation.watchPosition(AddLocation);
 }
 function AddLocation(position) {
-    let geo_lat = position.coords.latitude - 0.001;
-    let geo_lng = position.coords.longitude + 0.001;
+    let geo_lat = position.coords.latitude -+0.00001;
+    let geo_lng = position.coords.longitude + 0.00001;
     $('a-assets').after($("<a-entity gps-entity-place='latitude:" + geo_lat + '; longitude:' + geo_lng + ";' look-at='[gps-camera]' scale ='1 1 1' potion='0 0 0' animation='property:rotation; dur:10000; from:0 0 0; to:0 360 0; loop:-1; easing:linear;' gltf-model='#char'></a-entity>"));
     // $('a-assets').after($("<a-entity gps-entity-place=latitude:" + geo_lat + "; longitude:" + geo_lng + ";look-at=[gps-camera] scale =1,1,1 potion=0,3,0 animation=property:rotation;dur:10000;from:0,0,0;to:0,360,0;loop:-1;easing:linear; gltf-model=#char></a-entity>" ));
 
@@ -98,6 +87,7 @@ function AddLocation(position) {
     console.log(entity.getAttribute('gps-entity-place'));
     console.log(entity);
 }
+
 GetLocation();
 
 </script>
