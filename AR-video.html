@@ -3,11 +3,11 @@
 <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
   <body style='margin : 0px; overflow: hidden;'>
-    <a-assets>
-	    <video id="ar-video" autoplay loop="true" muted="true" src="location.mp4"></video>
-	  </a-assets>
 	  <!-- デバッグ用の画面表示、VR用のボタンをそれぞれ非表示に -->
     <a-scene embedded arjs="debugUIEnabled:false;" vr-mode-ui="enabled: false">
+      <a-assets>
+        <video id="ar-video" autoplay loop="true" muted="true" src="location.mp4"></video>
+      </a-assets>
       <!-- 今回作成した『.patt』ファイルを読み込む -->
       <a-marker preset="hiro">
 	      <a-video src="#ar-video" width="1.4" height="2.6" position="0 0 0" rotation="270 0 0" play="true"></a-video>
