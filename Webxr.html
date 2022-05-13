@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>=^.^=</title>
+<style>
+body {margin: 0;}
+canvas{display: block;}
+#startButton{font-size: 50px;}
+</style>
+</head>
+<body>
+
+<!-- WebXR を起動するためには、ユーザーが意図して起動するための「ボタン」が必須。-->
+<button type="button" id="startButton">click to start</button>
+<!-- WebXR の描画結果は WebGL の canvas となる。-->
+<canvas id="xrCanvas"></canvas>
+
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.113.2/build/three.module.js';
+
+const width  = window.innerWidth;
+const height = window.innerHeight;
+const $button = document.getElementById( 'startButton' );
+
+( async () => {
+
+  // 任意のモードが利用可能かを調べる
+  const isArSupported = navigator.xr && await navigator.xr.isSessionSupported( 'immersive-ar' );
+
+  // モードが利用できなければ起動ボタンを無効化
+  $button.disabled = ! isArSupported;
+
+  // ユーザーが操作して初めて WebXR を起動できる
+  $button.addEventListener( 'click', onEnterAR );
+
+  async function onEnterAR() {
+
+    $button.style.display = 'none';
+
+    // immersive-ar を渡したときは、カメラからの現実の風景を入力することができる。
+    // 他にも inline や vr のモードがある
+    const xrSession = await navigator.xr.requestSession( 'immersive-ar' );
+
+    // 本来は `getContext( 'webgl' )` で gl コンテキストを引き出す際に
+    // オプションとして「`xrCompatible: true`」を明示する必要がある。
+    // three.js では常に「`xrCompatible: true`」のオプションがついているので
+    // ここでは特別な設定をせずに XR として利用することができる
+    const renderer = new THREE.WebGLRenderer( { canvas: xrCanvas } );
+    renderer.autoClear = false;
+    renderer.setSize( width, height );
+
+    const gl = renderer.getContext();
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera();
+    camera.matrixAutoUpdate = false;
+
+    scene.add( new THREE.GridHelper( 100, 100 ) );
+
+    const box = new THREE.Mesh(
+      new THREE.BoxBufferGeometry( .2, .2, .2 ),
+      new THREE.MeshNormalMaterial()
+    );
+    scene.add( box );
+
+    // 「デバイスのカメラから取り込まれた現実の風景」の受け先となる、baseLayer を作る。
+    const xrWebGLLayer = new XRWebGLLayer( xrSession, gl );
+    // updateRenderState を設定していない場合、`xrSession.requestAnimationFrame` が呼ばれないので注意
+    xrSession.updateRenderState( { baseLayer: xrWebGLLayer } );
+
+    // 「デバイスの姿勢（pose）」の参照先を作る
+    // これにより、デバイスの傾きや位置を取得できるようになる。
+    const referenceSpace = await xrSession.requestReferenceSpace( 'local' );
+
+    // `window.requestAnimationFrame` ではなく、
+    // セッションの `requestAnimationFrame` に応じて描画する。
+    // 理由は以下の通り。
+    //
+    // - `window.requestAnimationFrame` の FPS はブラウザーの内部実装で最大 60 に抑えられているが、
+    //   `xrSession.requestAnimationFrame` はデバイスの画面リフレッシュレートにに応じる
+    // - `xrSession.requestAnimationFrame` では、第2引数として `xrFrame` を受け取ることができる。
+    //   `xrFrame` は `window.requestAnimationFrame` には存在しない。
+    xrSession.requestAnimationFrame( onDrawFrame );
+
+    function onDrawFrame( timestamp, xrFrame ) {
+
+      xrSession.requestAnimationFrame( onDrawFrame );
+      // 姿勢を取り出す。行列（matrix）の要素が格納された配列で受け取ることができる。
+      const pose = xrFrame.getViewerPose( referenceSpace );
+
+      // xrFrame からは、現在のセッション、とベースレイヤーを取り出すこともできる。
+      // xrFrame.session === xrSession;
+      // xrSession.renderState.baseLayer === xrWebGLLayer;
+
+      // 現実の風景をWebGLのフレームバッファーに転写する
+      gl.bindFramebuffer( gl.FRAMEBUFFER, xrWebGLLayer.framebuffer );
+
+      if ( ! pose ) return;
+
+      // if the xrSession is for both right and left eyes, length of views would be 2.
+      // if not, length is 1,
+      pose.views.forEach( ( view ) => {
+
+        const viewport = xrWebGLLayer.getViewport( view );
+        renderer.setSize( viewport.width, viewport.height );
+
+        camera.matrix.fromArray( view.transform.matrix );
+        camera.projectionMatrix.fromArray( view.projectionMatrix );
+        camera.updateMatrixWorld( true );
+
+        renderer.clearDepth();
+        renderer.render( scene, camera );
+
+      } );
+
+    }
+
+  }
+
+} )();
+</script>
+
+</body>
+</html>
